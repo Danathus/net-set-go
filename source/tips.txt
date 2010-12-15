@@ -1,0 +1,2 @@
+If it seems that one application instance is sending data to another but the other isn't receiving it
+  check to make sure that the amount sent isn't greater than the receiving end's max packet size!

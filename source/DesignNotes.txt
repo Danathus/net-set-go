@@ -1,0 +1,7 @@
+The idea for this library is to form a basis of networking code.
+
+Its dependencies should be minimal, mainly depending only on socket code.
+
+This should absolutely NOT be dependent on Delta3D...There will be other,
+higher-level libraries that can sit atop this one to bridge that gap.
+This one will be pure.
