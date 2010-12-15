@@ -5,10 +5,9 @@
 
 //#include <NetCore/Node.h> // for debug printing only, prolly should be removed...
 
-#include <dtUtil/log.h>
-#include <dtUtil/stringutils.h>
-
 #include <cassert>
+
+#define VERBOSE 0
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -55,7 +54,7 @@ size_t GuaranteedDeliverySystem::GuaranteedPacket::Deserialize(const char* packe
       char* payload = (char *)malloc(mLength);
       if (!payload)
       {
-         LOG_WARNING("impending assertion failure. malloc failed w/ length " + dtUtil::ToString(mLength));
+         printf("%s:%d\timpending assertion failure. malloc failed w/ length %d\n", __FUNCTION__, __LINE__, mLength);
       }
       assert(payload);
       memcpy(payload,           &packet[bytesRead], mLength);                     bytesRead += mLength;
@@ -95,7 +94,6 @@ GuaranteedDeliverySystem::GuaranteedDeliverySystem(const net::ReliabilitySystem&
    , mLocalGuaranteedSequenceNumber(0)
    , mRemoteGuaranteedSequenceNumber(0)
    , mGuaranteedNumberMismatchReported(false)
-   , mLogger(&dtUtil::Log::GetInstance("NetCore"))
 {
    //
 }
@@ -141,9 +139,10 @@ bool GuaranteedDeliverySystem::DequeueReceivedPacket(int nodeID, char*& packet, 
       {
          if (!mGuaranteedNumberMismatchReported)
          {
-            mLogger->LogMessage(dtUtil::Log::LOG_WARNING, __FUNCTION__, __LINE__,
-               "WARNING: for node %d, front.mGuaranteedSequence (%d) != mRemoteGuaranteedSequenceNumber (%d)\n",
-               nodeID, front.mGuaranteedSequence, mRemoteGuaranteedSequenceNumber);
+#if VERBOSE
+            printf("%s:%d\tWARNING: for node %d, front.mGuaranteedSequence (%d) != mRemoteGuaranteedSequenceNumber (%d)\n",
+               __FUNCTION__, __LINE__, nodeID, front.mGuaranteedSequence, mRemoteGuaranteedSequenceNumber);
+#endif
          }
          mGuaranteedNumberMismatchReported = true;
       }
@@ -153,8 +152,10 @@ bool GuaranteedDeliverySystem::DequeueReceivedPacket(int nodeID, char*& packet, 
          if (mGuaranteedNumberMismatchReported)
          {
             mGuaranteedNumberMismatchReported = false;
-            mLogger->LogMessage(dtUtil::Log::LOG_WARNING, __FUNCTION__, __LINE__, "...for node %d, Local and remote guaranteed sequence numbers match again!\n",
-               nodeID);
+#if VERBOSE
+            printf("%s:%d\t...for node %d, Local and remote guaranteed sequence numbers match again!\n",
+               __FUNCTION__, __LINE__, nodeID);
+#endif
          }
 
          // if the arguments passed in indicate we need to allocate, do so
@@ -225,11 +226,9 @@ size_t GuaranteedDeliverySystem::SerializePacket(char* packet, size_t maxLength)
       }
       else
       {
-         mLogger->LogMessage(__FUNCTION__,
-                             __LINE__,
-                             "guaranteed packet of size " +  dtUtil::ToString(guaranteedPacket.GetSize()) + 
-                             " is too big to fit within max length " +
-                             dtUtil::ToString(maxLength), dtUtil::Log::LOG_WARNING);
+#if VERBOSE
+         printf("%s:%d\tguaranteed packet of size %d is too big to fit within max length %d\n", __FUNCTION__, __LINE__, guaranteedPacket.GetSize(), maxLength);
+#endif
       }
    }
 
@@ -293,13 +292,10 @@ void GuaranteedDeliverySystem::Update()
                guaranteedPacket.mData               = pendingAckItor->guaranteedPacket.mData;
                guaranteedPacket.mLength             = pendingAckItor->guaranteedPacket.mLength;
 
-               mLogger->LogMessage(__FUNCTION__,
-                                   __LINE__,
-                                   ">>>\tdetected lost guaranteed-delivery packet: guaranteed seq# " + dtUtil::ToString(guaranteedPacket.mGuaranteedSequence) +
-                                   "reliability seq# " + dtUtil::ToString(itor->mSequence) +
-                                   "data length " + dtUtil::ToString(guaranteedPacket.mLength) +
-                                   "resending...",
-                                   dtUtil::Log::LOG_DEBUG);
+#if VERBOSE
+               printf("%s:%d\t>>>\tdetected lost guaranteed-delivery packet: guaranteed seq# %d reliability seq# %d data length %d resending...",
+                  __FUNCTION__, __LINE__, guaranteedPacket.mGuaranteedSequence, itor->mSequence, guaranteedPacket.mLength);
+#endif
                mPendingSendQueue.push_front(guaranteedPacket);
             }
 

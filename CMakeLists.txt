@@ -41,6 +41,8 @@ FIND_PACKAGE(OpenThreads REQUIRED) # is there a better way to do threading?
 # OPTIONS
 OPTION(BUILD_TESTS "Enables the building of the NetSetGo unit tests" OFF)
 
+INCLUDE_DIRECTORIES(${OPENTHREADS_INCLUDE_DIR})
+
 ################################################################################
 # handle the installation of the ext deps
 install(DIRECTORY ${EXT_BIN_DIR} DESTINATION ${PROJECT_BINARY_DIR}

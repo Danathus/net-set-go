@@ -25,15 +25,14 @@ ENDIF (MSVC)
 #libraries to link into the executable, both Release and Debug
 TARGET_LINK_LIBRARIES(${LIB_NAME}
                       ws2_32
-                      ${DTUTIL_LIBRARIES}
 )
 
 SET_TARGET_PROPERTIES(${LIB_NAME} PROPERTIES DEFINE_SYMBOL NETCORE)
 
 SET_TARGET_PROPERTIES(${LIB_NAME} 
-                       PROPERTIES FRAMEWORK TRUE 
-                       PUBLIC_HEADER "${LIB_HEADER_FILES}"
-                       )
+                      PROPERTIES FRAMEWORK TRUE 
+                      PUBLIC_HEADER "${LIB_HEADER_FILES}"
+)
 
 INSTALL(TARGETS ${LIB_NAME}
         RUNTIME DESTINATION bin

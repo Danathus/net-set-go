@@ -1,8 +1,8 @@
 #include <NetCore/FlowControl.h>
-#include <dtUtil/log.h>
-#include <dtUtil/stringutils.h>
 
 #include <stdio.h>
+
+#define VERBOSE 0
 
 namespace net {
 
@@ -30,7 +30,9 @@ namespace net {
       {
          if (rtt > RTT_Threshold)
          {
-            LOGN_DEBUG("NetCore", "*** dropping to bad mode ***");
+#if VERBOSE
+            printf("%s:%d\t*** dropping to bad mode ***\n", __FUNCTION__, __LINE__);
+#endif
             mMode = Bad;
             if (mGoodConditionsTime < 10.0f && mPenaltyTime < 60.0f)
             {
@@ -39,7 +41,9 @@ namespace net {
                {
                   mPenaltyTime = 60.0f;
                }
-               LOGN_DEBUG("NetCore", "penalty time increased to " + dtUtil::ToString(mPenaltyTime));
+#if VERBOSE
+               printf("%s:%d\tpenalty time increased to %f\n", __FUNCTION__, __LINE__, mPenaltyTime);
+#endif
             }
             mGoodConditionsTime = 0.0f;
             mPenaltyReductionAccumulator = 0.0f;
@@ -56,7 +60,9 @@ namespace net {
             {
                mPenaltyTime = 1.0f;
             }
-            LOGN_DEBUG("NetCore", "penalty time reduced to " + dtUtil::ToString(mPenaltyTime));
+#if VERBOSE
+            printf("%s:%d\tpenalty time reduced to %f\n", __FUNCTION__, __LINE__, mPenaltyTime);
+#endif
             mPenaltyReductionAccumulator = 0.0f;
          }
       }
@@ -74,7 +80,9 @@ namespace net {
 
          if (mGoodConditionsTime > mPenaltyTime)
          {
-            LOGN_DEBUG("NetCore", "*** upgrading to good mode ***");
+#if VERBOSE
+            printf("%s:%d\t*** upgrading to good mode ***\n", __FUNCTION__, __LINE__);
+#endif
             mGoodConditionsTime = 0.0f;
             mPenaltyReductionAccumulator = 0.0f;
             mMode = Good;

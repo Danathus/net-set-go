@@ -9,10 +9,6 @@
 
 #include <NetCore/ReliabilitySystem.h>
 
-namespace dtUtil
-{
-   class Log;
-}
 ////////////////////////////////////////////////////////////////////////////////
 
 /**
@@ -100,8 +96,6 @@ private:
 
    // for debug reporting
    bool mGuaranteedNumberMismatchReported;
-
-   dtUtil::Log* mLogger;
 };
 
 ////////////////////////////////////////////////////////////////////////////////

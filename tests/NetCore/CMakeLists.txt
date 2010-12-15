@@ -24,4 +24,5 @@ ENDIF (MSVC)
 # libraries to link into the executable, both Release and Debug
 TARGET_LINK_LIBRARIES(${EXE_NAME}
                       NetCore
+                      optimized ${OPENTHREADS_LIBRARY} debug  ${OPENTHREADS_LIBRARY_DEBUG}
 )
