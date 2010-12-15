@@ -58,7 +58,7 @@ ADD_CUSTOM_TARGET(UNINSTALL
 
 ################################################################################
 
-ADD_SUBDIRECTORY(${SOURCE_PATH}/NetCore)
+ADD_SUBDIRECTORY(${SOURCE_PATH}/NetSetGo)
 
 # tests
 IF (BUILD_TESTS)

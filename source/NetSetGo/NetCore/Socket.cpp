@@ -1,4 +1,4 @@
-#include <NetCore/Socket.h>
+#include <NetSetGo/NetCore/Socket.h>
 
 #if NET_PLATFORM == NET_PLATFORM_WINDOWS
 #   include <WinSock2.h>

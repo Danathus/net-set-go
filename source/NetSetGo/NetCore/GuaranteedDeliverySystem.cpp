@@ -1,7 +1,7 @@
-#include <NetCore/GuaranteedDeliverySystem.h>
+#include <NetSetGo/NetCore/GuaranteedDeliverySystem.h>
 
-#include <NetCore/netassert.h>
-#include <NetCore/NetworkEngine.h>
+#include <NetSetGo/NetCore/netassert.h>
+#include <NetSetGo/NetCore/NetworkEngine.h>
 
 //#include <NetCore/Node.h> // for debug printing only, prolly should be removed...
 

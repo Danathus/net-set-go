@@ -5,9 +5,9 @@
 
 #include <map>
 
-#include <NetCore/NetCoreExport.h>
+#include <NetSetGo/NetCore/NetCoreExport.h>
 
-#include <NetCore/ReliabilitySystem.h>
+#include <NetSetGo/NetCore/ReliabilitySystem.h>
 
 ////////////////////////////////////////////////////////////////////////////////
 

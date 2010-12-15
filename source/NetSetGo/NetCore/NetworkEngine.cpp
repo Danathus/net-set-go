@@ -1,4 +1,4 @@
-#include <NetCore/NetworkEngine.h>
+#include <NetSetGo/NetCore/NetworkEngine.h>
 
 #include <cassert>
 

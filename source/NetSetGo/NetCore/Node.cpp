@@ -1,9 +1,9 @@
-#include <NetCore/Node.h>
+#include <NetSetGo/NetCore/Node.h>
 
 #include <cassert>
 #include <sstream>
 
-#include <NetCore/netassert.h>
+#include <NetSetGo/NetCore/netassert.h>
 
 #define PRINT_OUTGOING_PACKETS 0 // commit as 0
 #define PRINT_INCOMING_PACKETS 0 // commit as 0

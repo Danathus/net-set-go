@@ -1,8 +1,8 @@
-#include <NetCore/PacketProcessor.h>
+#include <NetSetGo/NetCore/PacketProcessor.h>
 
 #include <cassert>
 
-#include <NetCore/PacketParser.h>
+#include <NetSetGo/NetCore/PacketParser.h>
 
 namespace net {
 

@@ -1,7 +1,7 @@
-#include <NetCore/Mesh.h>
+#include <NetSetGo/NetCore/Mesh.h>
 
 // these are only included to satisfy an aggravating special case
-#include <NetCore/NetworkEngine.h>
+#include <NetSetGo/NetCore/NetworkEngine.h>
 
 #include <cassert>
 

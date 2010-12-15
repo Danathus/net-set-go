@@ -5,9 +5,9 @@
 
 #include <vector>
 
-#include <NetCore/NetCoreExport.h>
+#include <NetSetGo/NetCore/NetCoreExport.h>
 
-#include <NetCore/PacketQueue.h>
+#include <NetSetGo/NetCore/PacketQueue.h>
 
 namespace net {
 

@@ -38,7 +38,7 @@ void print_trace()
 
 ////////////////////////////////////////////////////////////////////////////////
 
-#include <NetCore/Address.h>
+#include <NetSetGo/NetCore/Address.h>
 
 void testAddress()
 {
@@ -62,7 +62,7 @@ void testAddress()
 
 ////////////////////////////////////////////////////////////////////////////////
 
-#include <NetCore/Beacon.h>
+#include <NetSetGo/NetCore/Beacon.h>
 
 void testBeaconHeader()
 {
@@ -258,8 +258,8 @@ zz;
 
 ////////////////////////////////////////////////////////////////////////////////
 
-#include <NetCore/PacketProcessor.h>
-#include <NetCore/PacketParser.h>
+#include <NetSetGo/NetCore/PacketProcessor.h>
+#include <NetSetGo/NetCore/PacketParser.h>
 
 class TestPacketParserA : public net::PacketParser
 {
@@ -378,7 +378,7 @@ void testPacketProcessor()
 
 ////////////////////////////////////////////////////////////////////////////////
 
-#include <NetCore/PacketQueue.h>
+#include <NetSetGo/NetCore/PacketQueue.h>
 
 void testPacketQueue()
 {
@@ -430,7 +430,7 @@ void testPacketQueue()
 
 ////////////////////////////////////////////////////////////////////////////////
 
-#include <NetCore/Socket.h>
+#include <NetSetGo/NetCore/Socket.h>
 
 void testSocket()
 {

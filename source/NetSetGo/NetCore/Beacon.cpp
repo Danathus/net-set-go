@@ -1,10 +1,10 @@
-#include <NetCore/Beacon.h>
+#include <NetSetGo/NetCore/Beacon.h>
 
 #include <cassert>
 #include <stdio.h>
 
-#include <NetCore/netassert.h>
-#include <NetCore/Serialization.h>
+#include <NetSetGo/NetCore/netassert.h>
+#include <NetSetGo/NetCore/Serialization.h>
 
 namespace net {
 

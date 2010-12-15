@@ -5,12 +5,12 @@
 
 #include <map>
 
-#include <NetCore/NetCoreExport.h>
-#include <NetCore/Socket.h>
-#include <NetCore/ReliabilitySystem.h>
-#include <NetCore/NodeID.h>
-#include <NetCore/FlowControl.h>
-#include <NetCore/GuaranteedDeliverySystem.h>
+#include <NetSetGo/NetCore/NetCoreExport.h>
+#include <NetSetGo/NetCore/Socket.h>
+#include <NetSetGo/NetCore/ReliabilitySystem.h>
+#include <NetSetGo/NetCore/NodeID.h>
+#include <NetSetGo/NetCore/FlowControl.h>
+#include <NetSetGo/NetCore/GuaranteedDeliverySystem.h>
 
 namespace net {
 

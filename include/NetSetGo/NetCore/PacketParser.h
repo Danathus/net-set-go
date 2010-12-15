@@ -1,7 +1,7 @@
 #ifndef PACKET_PARSER__H
 #define PACKET_PARSER__H
 
-#include <NetCore/Address.h>
+#include <NetSetGo/NetCore/Address.h>
 
 namespace net {
 

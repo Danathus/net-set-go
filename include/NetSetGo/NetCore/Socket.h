@@ -3,10 +3,10 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 
-#include <NetCore/NetCoreExport.h>
+#include <NetSetGo/NetCore/NetCoreExport.h>
 
-#include <NetCore/Address.h>
-#include <NetCore/NetPlatform.h>
+#include <NetSetGo/NetCore/Address.h>
+#include <NetSetGo/NetCore/NetPlatform.h>
 
 namespace net {
 

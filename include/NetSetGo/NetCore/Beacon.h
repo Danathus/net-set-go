@@ -3,10 +3,10 @@
 
 #include <string>
 
-#include <NetCore/NetCoreExport.h>
+#include <NetSetGo/NetCore/NetCoreExport.h>
 
-#include <NetCore/Socket.h>
-#include <NetCore/Serialization.h>
+#include <NetSetGo/NetCore/Socket.h>
+#include <NetSetGo/NetCore/Serialization.h>
 
 // beacon
 //  + sends broadcast UDP packets to the LAN

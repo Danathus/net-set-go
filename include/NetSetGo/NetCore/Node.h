@@ -3,12 +3,12 @@
 
 #include <queue>
 
-#include <NetCore/NetCoreExport.h>
+#include <NetSetGo/NetCore/NetCoreExport.h>
 
-#include <NetCore/Address.h>
-#include <NetCore/PacketParser.h>
+#include <NetSetGo/NetCore/Address.h>
+#include <NetSetGo/NetCore/PacketParser.h>
 
-#include <NetCore/NetworkTopology.h>
+#include <NetSetGo/NetCore/NetworkTopology.h>
 
 namespace net {
 

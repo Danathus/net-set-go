@@ -1,4 +1,4 @@
-#include <NetCore/PacketQueue.h>
+#include <NetSetGo/NetCore/PacketQueue.h>
 
 #include <cassert>
 

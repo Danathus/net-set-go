@@ -1,12 +1,12 @@
-#include <NetCore/NetworkTopology.h>
+#include <NetSetGo/NetCore/NetworkTopology.h>
 
 #include <cassert>
 #include <stdio.h>
 #include <malloc.h>
 
-#include <NetCore/netassert.h>
-#include <NetCore/PacketParser.h>
-#include <NetCore/Serialization.h>
+#include <NetSetGo/NetCore/netassert.h>
+#include <NetSetGo/NetCore/PacketParser.h>
+#include <NetSetGo/NetCore/Serialization.h>
 
 namespace net {
 

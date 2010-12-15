@@ -1,7 +1,7 @@
 #ifndef ADDRESS_H
 #define ADDRESS_H
 
-#include <NetCore/NetCoreExport.h>
+#include <NetSetGo/NetCore/NetCoreExport.h>
 
 #include <string>
 

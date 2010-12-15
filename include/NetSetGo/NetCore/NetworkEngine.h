@@ -3,13 +3,13 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 
-#include <NetCore/NetCoreExport.h>
+#include <NetSetGo/NetCore/NetCoreExport.h>
 
-#include <NetCore/Address.h>
-#include <NetCore/Beacon.h>
-#include <NetCore/Node.h>
-#include <NetCore/Mesh.h>
-#include <NetCore/PacketProcessor.h>
+#include <NetSetGo/NetCore/Address.h>
+#include <NetSetGo/NetCore/Beacon.h>
+#include <NetSetGo/NetCore/Node.h>
+#include <NetSetGo/NetCore/Mesh.h>
+#include <NetSetGo/NetCore/PacketProcessor.h>
 
 ////////////////////////////////////////////////////////////////////////////////
 

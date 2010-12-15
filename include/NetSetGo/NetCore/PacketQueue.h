@@ -3,7 +3,7 @@
 
 #include <list>
 
-#include <NetCore/NetCoreExport.h>
+#include <NetSetGo/NetCore/NetCoreExport.h>
 
 namespace net {
 

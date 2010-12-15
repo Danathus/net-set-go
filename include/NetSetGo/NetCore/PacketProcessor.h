@@ -5,7 +5,7 @@
 
 #include <map>
 
-#include <NetCore/Address.h>
+#include <NetSetGo/NetCore/Address.h>
 
 namespace net
 {
