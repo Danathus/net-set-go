@@ -36,12 +36,13 @@ SET(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
 MAKE_DIRECTORY(${EXECUTABLE_OUTPUT_PATH})
 MAKE_DIRECTORY(${LIBRARY_OUTPUT_PATH})
 
-FIND_PACKAGE(OpenThreads REQUIRED) # is there a better way to do threading?
+FIND_PACKAGE(OpenThreads) # is there a better way to do threading?
 
 # OPTIONS
-OPTION(BUILD_TESTS "Enables the building of the NetSetGo unit tests" OFF)
+IF (OPENTHREADS_FOUND)
+  OPTION(BUILD_TESTS "Enables the building of the NetSetGo unit tests" OFF)
+ENDIF (OPENTHREADS_FOUND)
 
-INCLUDE_DIRECTORIES(${OPENTHREADS_INCLUDE_DIR})
 
 ################################################################################
 # handle the installation of the ext deps

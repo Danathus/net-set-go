@@ -12,6 +12,7 @@ ADD_EXECUTABLE(${EXE_NAME}
 )
 
 INCLUDE_DIRECTORIES(${HEADER_PATH}
+                    ${OPENTHREADS_INCLUDE_DIR}
                     # todo: add more
 )
 
