@@ -234,6 +234,11 @@ namespace net {
       return node;
    }
 
+   const std::vector<NetworkTopology::NodeState*>& NetworkTopology::GetAllNodes() const
+   {
+      return mNodes;
+   }
+
    void NetworkTopology::Reserve(int numNodes)
    {
       const size_t prevSize = mNodes.size();

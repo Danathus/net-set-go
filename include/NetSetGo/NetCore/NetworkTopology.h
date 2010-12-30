@@ -92,6 +92,7 @@ public:
    NodeID GetNodeIDFromAddress(const Address& address) const;
    NodeState* GetNodeByID(NodeID nodeID);
    const NodeState* GetNodeByID(NodeID nodeID) const;
+   const std::vector<NodeState*>& GetAllNodes() const;
    //
    void Reserve(int numNodes);
    int GetNumNodesReserved() const; // can include nodes that have dropped out
