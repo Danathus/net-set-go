@@ -92,7 +92,10 @@ private:
    float mRoundTripTime;             // estimated round trip time
    float mRoundTripTimeMaximum;      // maximum expected round trip time (hard coded to one second for the moment)
 
+#pragma warning (push)
+#pragma warning (disable:4251)
    std::vector<unsigned int> mAcks;  // acked packets from last set of packet receives. cleared each update!
+#pragma warning (pop)
 
    PacketQueue mSentQueue;           // sent packets used to calculate sent bandwidth (kept until rtt_maximum)
    PacketQueue mPendingAckQueue;     // sent packets which have not been acked yet (kept until rtt_maximum * 2)

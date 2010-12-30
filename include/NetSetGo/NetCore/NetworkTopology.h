@@ -115,6 +115,9 @@ protected:
 
    float mSendAccumulator;
 
+#pragma warning (push)
+#pragma warning (disable:4251)
+
    //*
    // todo: move down to private
    typedef std::map<Address, NodeID> AddrToNodeID;
@@ -135,6 +138,7 @@ private:
    AddrToNodeID mAddrToNodeID;
    //*/
    std::vector<NodeState*> mNodes;
+#pragma warning (pop)
 };
 
 ////////////////////////////////////////////////////////////////////////////////

@@ -87,12 +87,17 @@ private:
    unsigned int mLocalGuaranteedSequenceNumber;  // local sequence number for most recently sent packet
    unsigned int mRemoteGuaranteedSequenceNumber; // remote sequence number for next received packet to be dequeued
 
+#pragma warning (push)
+#pragma warning (disable:4251)
+
    // for sending
    std::list<GuaranteedPacket>       mPendingSendQueue;
    std::list<IssuedGuaranteedPacket> mPendingAckQueue;
 
    // for receiving
    std::list<GuaranteedPacket>       mPendingRecvQueue;
+
+#pragma warning (pop)
 
    // for debug reporting
    bool mGuaranteedNumberMismatchReported;

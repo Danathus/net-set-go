@@ -34,6 +34,9 @@ struct NETCORE_EXPORT PacketData
    bool operator<(const PacketData& packetData) const;
 };
 
+#pragma warning (push)
+#pragma warning (disable:4251)
+
 /**
  * PacketQueue
  *
@@ -47,6 +50,8 @@ public:
    void insert_sorted(const PacketData& p, unsigned int max_sequence);
    bool verify_sorted(unsigned int max_sequence) const;
 };
+
+#pragma warning (pop)
 
 ////////////////////////////////////////////////////////////////////////////////
 

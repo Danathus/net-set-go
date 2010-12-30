@@ -40,8 +40,14 @@ namespace net {
 
    protected:
    private:
+
+#pragma warning (push)
+#pragma warning (disable:4251)
+
       typedef std::map<ProtocolID, PacketParser*> ProtocolToParserMap;
       ProtocolToParserMap mProtocolToParserMap;
+
+#pragma warning (pop)
    };
 
 } // namespace net

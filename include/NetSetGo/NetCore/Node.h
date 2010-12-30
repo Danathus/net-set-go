@@ -92,8 +92,13 @@ private:
       Node& mNode;
    };
 
+#pragma warning (push)
+#pragma warning (disable:4251)
+
    typedef std::queue<BufferedPacket*> PacketBuffer;
    PacketBuffer mReceivedPackets;
+
+#pragma warning (pop)
 
    float mTimeoutAccumulator;
    State mPreviousState, mCurrentState;
