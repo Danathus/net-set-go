@@ -38,7 +38,8 @@ public:
       Disconnected,
       Connecting,
       Connected,
-      ConnectFail
+      ConnectFail,
+      Unknown = 0x7fffffff
    };
    struct NodeState
    {
