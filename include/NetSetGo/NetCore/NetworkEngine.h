@@ -22,10 +22,6 @@ namespace net {
     * functionality sufficient for hosting, joining, advertising via beacons,
     * as well as maintaining the Mesh and Node that represent the network and
     * one's role in it.
-    *
-    * Note that when using the DeltaNetworkAdapter, the NetworkEngineComponent
-    * manages the NetworkEngine, so application code need not deal with the
-    * NetworkEngine directly.
     */
    class NETCORE_EXPORT NetworkEngine
    {
