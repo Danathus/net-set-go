@@ -26,7 +26,15 @@ bool net::InitializeSockets()
    {
 #if NET_PLATFORM == NET_PLATFORM_WINDOWS
       WSADATA WsaData;
-      result = (WSAStartup(MAKEWORD(2,2), &WsaData) == NO_ERROR);
+
+      int resultCode = WSAStartup(MAKEWORD(2,2), &WsaData);
+      result = (resultCode == NO_ERROR);
+
+      // Print out errors
+      if (!result)
+      {
+         printf("Winsock startup failed: WSAStartup code %d", result);
+      }
 #else
       result = true;
 #endif
@@ -239,7 +247,7 @@ bool net::Socket::Subscribe(const net::Address& multicastAddress)
    mc_req.imr_interface.s_addr = htonl(INADDR_ANY);
 
    // send an ADD MEMBERSHIP message via setsockopt
-   if ((setsockopt(SocketInternalType(mSocket), IPPROTO_IP, IP_ADD_MEMBERSHIP, 
+   if ((setsockopt(SocketInternalType(mSocket), IPPROTO_IP, IP_ADD_MEMBERSHIP,
       (const char*)&mc_req, sizeof(mc_req))) < 0)
    {
       success = false;
@@ -259,7 +267,7 @@ bool net::Socket::Unsubscribe(const net::Address& multicastAddress)
    mc_req.imr_interface.s_addr = htonl(INADDR_ANY);
 
    // send a DROP MEMBERSHIP message via setsockopt
-   if ((setsockopt(SocketInternalType(mSocket), IPPROTO_IP, IP_DROP_MEMBERSHIP, 
+   if ((setsockopt(SocketInternalType(mSocket), IPPROTO_IP, IP_DROP_MEMBERSHIP,
       (const char*)&mc_req, sizeof(mc_req))) < 0)
    {
       success = false;
