@@ -2,7 +2,9 @@
 
 #include <cassert>
 #include <stdio.h>
-#include <malloc.h>
+#if NET_PLATFORM == NET_PLATFORM_WINDOWS
+#   include <malloc.h>
+#endif
 
 #include <NetSetGo/NetCore/netassert.h>
 #include <NetSetGo/NetCore/PacketParser.h>

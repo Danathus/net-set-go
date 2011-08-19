@@ -16,7 +16,7 @@ void PacketProcessor::RegisterParser(ProtocolID protocolID, PacketParser* parser
 
 void PacketProcessor::RemoveParser(ProtocolID protocolID)
 {
-   ProtocolToParserMap::const_iterator parserFound = mProtocolToParserMap.find(protocolID);
+   ProtocolToParserMap::iterator parserFound = mProtocolToParserMap.find(protocolID);
    if (parserFound != mProtocolToParserMap.end())
    {
       mProtocolToParserMap.erase(parserFound);

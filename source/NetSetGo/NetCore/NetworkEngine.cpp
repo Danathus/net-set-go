@@ -4,6 +4,9 @@
 
 #if NET_PLATFORM == NET_PLATFORM_WINDOWS
 #   include <WinSock2.h>
+#else
+#   include <netdb.h>
+#   define SOCKET_ERROR -1
 #endif
 
 net::NetworkEngine* net::NetworkEngine::sgSelf = 0;
@@ -51,10 +54,14 @@ net::Address NetworkEngine::GetAddressFromHostName(const std::string& hostName)
 
    // Obtain the computer's IP
    return Address(
+#if NET_PLATFORM == NET_PLATFORM_WINDOWS
       ((struct in_addr *)(host->h_addr))->S_un.S_un_b.s_b1,
       ((struct in_addr *)(host->h_addr))->S_un.S_un_b.s_b2,
       ((struct in_addr *)(host->h_addr))->S_un.S_un_b.s_b3,
       ((struct in_addr *)(host->h_addr))->S_un.S_un_b.s_b4,
+#else
+      ((struct in_addr *)(host->h_addr))->s_addr,
+#endif
       0
    );
 }

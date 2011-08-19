@@ -3,6 +3,9 @@
 #if NET_PLATFORM == NET_PLATFORM_WINDOWS
 #   include <WinSock2.h>
 #   include <Ws2tcpip.h>
+#else
+#   include <netdb.h>
+#   include <fcntl.h>
 #endif
 
 #include <cassert>
@@ -110,7 +113,7 @@ bool net::Socket::Open(unsigned short port)
 #if NET_PLATFORM == NET_PLATFORM_MAC || NET_PLATFORM == NET_PLATFORM_UNIX
 
       int nonBlocking = 1;
-      if (fcntl(socket, F_SETFL, O_NONBLOCK, nonBlocking) == -1)
+      if (fcntl(mSocket, F_SETFL, O_NONBLOCK, nonBlocking) == -1)
       {
          printf("failed to set non-blocking socket\n");
          Close();
