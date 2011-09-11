@@ -60,7 +60,10 @@ net::Address NetworkEngine::GetAddressFromHostName(const std::string& hostName)
       ((struct in_addr *)(host->h_addr))->S_un.S_un_b.s_b3,
       ((struct in_addr *)(host->h_addr))->S_un.S_un_b.s_b4,
 #else
-      ((struct in_addr *)(host->h_addr))->s_addr,
+      ((unsigned char *)&((struct in_addr *)(host->h_addr))->s_addr)[0],
+      ((unsigned char *)&((struct in_addr *)(host->h_addr))->s_addr)[1],
+      ((unsigned char *)&((struct in_addr *)(host->h_addr))->s_addr)[2],
+      ((unsigned char *)&((struct in_addr *)(host->h_addr))->s_addr)[3],
 #endif
       0
    );

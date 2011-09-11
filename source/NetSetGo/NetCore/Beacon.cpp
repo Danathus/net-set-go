@@ -164,7 +164,7 @@ namespace net {
 
             if (!success)
             {
-               printf("failed to send broadcast packet\n");
+               //printf("failed to send broadcast packet\n");
             }
          }
       }
@@ -184,18 +184,22 @@ namespace net {
             const size_t bytesWritten = mHeader.Serialize(&packetBuffer[position], packetBufferSize - position);
             position = (bytesWritten < 0) ? bytesWritten : (position + bytesWritten);
             success = bytesWritten >= 0 && bytesWritten <= mHeader.GetSize();
+			 if (!success) printf("failed to write header\n");
          }
          if (success && mpUserData)
          {
             const size_t bytesWritten = mpUserData->Serialize(&packetBuffer[position], packetBufferSize - position);
             position = (bytesWritten < 0) ? bytesWritten : (position + bytesWritten);
             success = bytesWritten >= 0 && bytesWritten <= mpUserData->GetSize();
+			 if (!success) printf("failed to serialize user data\n");
          }
       }
 
       if (success)
       {
          success = mSocket.Send(Address(255,255,255,255, mListenerPort), packetBuffer, position);
+		  //if (!success) printf("failed to send packet\n");
+		  // this step is failing...
       }
 
       return success;
