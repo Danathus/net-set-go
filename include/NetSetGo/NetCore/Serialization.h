@@ -16,6 +16,7 @@ public:
    virtual size_t Deserialize(const unsigned char* buffer, size_t numBytes) = 0;
 
    virtual size_t GetSize() const = 0;
+
 protected:
 private:
 };
