@@ -16,12 +16,6 @@ INCLUDE_DIRECTORIES(${HEADER_PATH}
                     # todo: add more
 )
 
-# little hack to get the .dll into /bin and .lib into /lib
-IF (MSVC)
-  SET_TARGET_PROPERTIES(${EXE_NAME} PROPERTIES PREFIX "../../bin/")
-  SET_TARGET_PROPERTIES(${EXE_NAME} PROPERTIES IMPORT_PREFIX "../")
-ENDIF (MSVC)
-
 # libraries to link into the executable, both Release and Debug
 TARGET_LINK_LIBRARIES(${EXE_NAME}
                       NetCore
