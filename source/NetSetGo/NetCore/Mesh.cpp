@@ -238,7 +238,7 @@ namespace net {
                // cheat: at this point we should disconnect the node's node, too
                {
                   net::Node& node = net::NetworkEngine::GetRef().GetNode();
-                  if (node.IsRunning())
+                  if (node.IsRunning() && node.IsNodeConnected(i))
                   {
                      node.DisconnectNode(i, node.GetNodeAddress(i));
                   }
