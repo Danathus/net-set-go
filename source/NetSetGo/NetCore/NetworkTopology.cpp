@@ -48,12 +48,12 @@ namespace net {
    void NetworkTopology::NodeState::Update(float deltaTime)
    {
       mPreviousState = mCurrentState;
-      mReliabilitySystem.Update(deltaTime);
-      mGuaranteedDeliverySystem.Update();
 
       // update flow control
       if (mCurrentState == Connected)
       {
+         mReliabilitySystem.Update(deltaTime);
+         mGuaranteedDeliverySystem.Update();
          mFlowControl.Update(deltaTime, mReliabilitySystem.GetRoundTripTime() * 1000.0f);
       }
       else
@@ -261,12 +261,6 @@ namespace net {
       }
    }
 
-   int NetworkTopology::GetNumNodesReserved() const
-   {
-      assert(mNodes.size() <= 255);
-      const int numNodesReserved = int(mNodes.size());
-      return numNodesReserved;
-   }
 
 ////////////////////////////////////////////////////////////////////////////////
 

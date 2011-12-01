@@ -96,7 +96,12 @@ public:
    const std::vector<NodeState*>& GetAllNodes() const;
    //
    void Reserve(int numNodes);
-   int GetNumNodesReserved() const; // can include nodes that have dropped out
+
+   /// can include nodes that have dropped out
+   inline int GetNumNodesReserved() const
+   {
+      return static_cast<int>(mNodes.size());
+   }; 
 
    // pure virtual methods
    virtual std::string GetIdentity() const = 0;
