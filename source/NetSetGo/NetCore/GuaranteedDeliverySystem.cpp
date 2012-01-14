@@ -6,6 +6,9 @@
 //#include <NetCore/Node.h> // for debug printing only, prolly should be removed...
 
 #include <cassert>
+#include <cstring>
+#include <cstdlib>
+#include <cstdio>
 
 #define VERBOSE 0
 

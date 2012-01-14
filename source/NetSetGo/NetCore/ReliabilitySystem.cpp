@@ -1,6 +1,7 @@
 #include <NetSetGo/NetCore/ReliabilitySystem.h>
 
 #include <cassert>
+#include <cstdio>
 
 namespace net {
 

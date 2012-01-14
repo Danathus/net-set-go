@@ -2,6 +2,8 @@
 
 #include <cassert>
 #include <stdio.h>
+#include <cstring>
+#include <cstdlib>
 
 #include <NetSetGo/NetCore/netassert.h>
 #include <NetSetGo/NetCore/Serialization.h>

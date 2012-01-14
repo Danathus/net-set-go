@@ -2,6 +2,9 @@
 
 #include <cassert>
 #include <sstream>
+#include <cstdlib>
+#include <cstdio>
+#include <cstring>
 
 #include <NetSetGo/NetCore/netassert.h>
 

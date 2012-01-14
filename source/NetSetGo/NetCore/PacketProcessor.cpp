@@ -1,6 +1,7 @@
 #include <NetSetGo/NetCore/PacketProcessor.h>
 
 #include <cassert>
+#include <cstring> //for memcpy
 
 #include <NetSetGo/NetCore/PacketParser.h>
 

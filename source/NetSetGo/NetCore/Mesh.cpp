@@ -4,6 +4,8 @@
 #include <NetSetGo/NetCore/NetworkEngine.h>
 
 #include <cassert>
+#include <cstdlib>
+#include <cstdio>
 
 namespace net {
 

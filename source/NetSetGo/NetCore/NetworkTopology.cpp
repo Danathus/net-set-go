@@ -2,6 +2,8 @@
 
 #include <cassert>
 #include <stdio.h>
+#include <cstring>
+#include <cstdlib>
 #if NET_PLATFORM == NET_PLATFORM_WINDOWS
 #   include <malloc.h>
 #endif
