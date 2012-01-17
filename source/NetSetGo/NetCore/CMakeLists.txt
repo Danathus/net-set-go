@@ -7,9 +7,7 @@ ADD_SOURCE_FILES(LIB_SOURCE_FILES ${SOURCE_DIR} "")
 
 ADD_HEADER_FILES(LIB_HEADER_FILES ${HEADER_DIR} "")
 
-#IF (MSVC)
-  SET(LIB_TYPE SHARED)
-#ENDIF (MSVC)
+SET(LIB_TYPE SHARED)
 
 ADD_LIBRARY(${LIB_NAME}
             ${LIB_TYPE}
@@ -21,10 +19,11 @@ INCLUDE_DIRECTORIES(${HEADER_PATH}
                     # todo: add more
 )
 
-#libraries to link into the executable, both Release and Debug
-TARGET_LINK_LIBRARIES(${LIB_NAME}
-#                      ws2_32
-)
+#Windows libraries to link into the executable, both Release and Debug
+IF (MSVC)
+   TARGET_LINK_LIBRARIES(${LIB_NAME}
+                         ws2_32)
+ENDIF (MSVC)
 
 SET_TARGET_PROPERTIES(${LIB_NAME} PROPERTIES DEFINE_SYMBOL NETCORE)
 
