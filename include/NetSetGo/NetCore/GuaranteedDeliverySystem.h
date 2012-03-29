@@ -35,6 +35,7 @@ class NETCORE_EXPORT GuaranteedDeliverySystem
 {
 public:
    GuaranteedDeliverySystem(const net::ReliabilitySystem& reliabilitySystem);
+   ~GuaranteedDeliverySystem();
 
    void Reset();
    static size_t GetHeaderSize() { return GuaranteedPacket::GetHeaderSize(); }
@@ -83,6 +84,8 @@ protected:
    std::list<IssuedGuaranteedPacket>::iterator FindPendingAckPacket(unsigned int reliabilitySequence);
    bool FindInPacketList(const std::list<GuaranteedPacket>& packetList, const GuaranteedPacket& packet) const;
    void InsertSorted(std::list<GuaranteedPacket>& packetList, const GuaranteedPacket& packet);
+
+   void ClearQueues();
 
 private:
    const net::ReliabilitySystem& mReliabilitySystem;

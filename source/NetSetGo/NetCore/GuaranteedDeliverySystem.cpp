@@ -73,9 +73,8 @@ size_t GuaranteedDeliverySystem::GuaranteedPacket::GetHeaderSize()
 {
    size_t bytes = 0;
 
-   GuaranteedPacket packet;
-   bytes += sizeof(packet.mGuaranteedSequence);
-   bytes += sizeof(packet.mLength);
+   bytes += sizeof(GuaranteedPacket().mGuaranteedSequence);
+   bytes += sizeof(GuaranteedPacket().mLength);
 
    return bytes;
 }
@@ -101,14 +100,17 @@ GuaranteedDeliverySystem::GuaranteedDeliverySystem(const net::ReliabilitySystem&
    //
 }
 
+GuaranteedDeliverySystem::~GuaranteedDeliverySystem()
+{
+   Reset();
+}
+
 void GuaranteedDeliverySystem::Reset()
 {
    mLocalGuaranteedSequenceNumber  = 0;
    mRemoteGuaranteedSequenceNumber = 0;
 
-   mPendingSendQueue.clear();
-   mPendingAckQueue.clear();
-   mPendingRecvQueue.clear();
+   ClearQueues();
 }
 
 void GuaranteedDeliverySystem::QueueOutgoingPacket(const char* packet, size_t length)
@@ -271,6 +273,9 @@ void GuaranteedDeliverySystem::Update()
 
          if (pendingAckItor != mPendingAckQueue.end())
          {
+            free((void*)pendingAckItor->guaranteedPacket.mData);
+            pendingAckItor->guaranteedPacket.mData = NULL;
+
             // remove from pending ack queue
             mPendingAckQueue.erase(pendingAckItor); // todo: should really properly free memory...
          }
@@ -367,6 +372,46 @@ void GuaranteedDeliverySystem::InsertSorted(std::list<GuaranteedPacket>& packetL
          }
       }
    }
+}
+
+void GuaranteedDeliverySystem::ClearQueues()
+{
+   // Free leftover memory in the pending queue
+   {
+      std::list<GuaranteedPacket>::iterator iter = mPendingSendQueue.begin();
+      while (iter != mPendingSendQueue.end())
+      {
+         free((void*)iter->mData);
+         iter->mData = NULL;
+         ++iter;
+      }
+   }
+
+   // Free leftover memory in the issued queue
+   {
+      std::list<IssuedGuaranteedPacket>::iterator iter = mPendingAckQueue.begin();
+      while (iter != mPendingAckQueue.end())
+      {
+         free((void*)iter->guaranteedPacket.mData);
+         iter->guaranteedPacket.mData = NULL;
+         ++iter;
+      }
+   }
+
+   // Free leftover memory in the pending reception queue
+   {
+      std::list<GuaranteedPacket>::iterator iter = mPendingRecvQueue.begin();
+      while (iter != mPendingRecvQueue.end())
+      {
+         free((void*)iter->mData);
+         iter->mData = NULL;
+         ++iter;
+      }
+   }
+
+   mPendingSendQueue.clear();
+   mPendingAckQueue.clear();
+   mPendingRecvQueue.clear();
 }
 
 ////////////////////////////////////////////////////////////////////////////////
