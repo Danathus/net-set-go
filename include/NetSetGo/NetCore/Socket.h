@@ -50,6 +50,8 @@ public:
    bool Send(const net::Address& destination, const void* data, int size);
    int Receive(net::Address& sender, void* data, int size); // returns number of bytes read
 
+   void ReportLastError();
+
    /** multi-cast calls
     * Think of multi-cast signals as a newsletter, and we can
     * subscribe and unsubscribe to this newsletter.

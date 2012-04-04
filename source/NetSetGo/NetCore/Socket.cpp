@@ -226,6 +226,11 @@ int net::Socket::Receive(net::Address& sender, void* data, int size)
 
    int received_bytes = recvfrom(SocketInternalType(mSocket), (char*)data, size, 0, (sockaddr*)&from, &fromLength);
 
+   if (received_bytes == SOCKET_ERROR)
+   {
+      ReportLastError();
+   }
+
    if (received_bytes <= 0)
    {
       return 0;
@@ -237,6 +242,31 @@ int net::Socket::Receive(net::Address& sender, void* data, int size)
    sender = Address(address, port);
 
    return received_bytes;
+}
+
+void net::Socket::ReportLastError()
+{
+#if NET_PLATFORM == NET_PLATFORM_WINDOWS
+   int errCode = WSAGetLastError();
+
+   // Note! WSAECONNRESET is likely to be spammed while waiting for connections
+   // to timeout.  This case should be further investigated.
+
+   // Ignore "would block" which seems to happen under normal/acceptable conditions
+   if (errCode != WSAEWOULDBLOCK)
+   {
+      // will be allocated and filled by FormatMessage
+      LPSTR errString = NULL;
+
+      int size = FormatMessage( FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM,
+         0, errCode, 0, (LPSTR)&errString, 0, 0);
+
+      printf("Error code %d: %s", errCode, errString);
+
+      // Clean up memory allocated by Format Message
+      LocalFree(errString);
+   }
+#endif
 }
 
 bool net::Socket::Subscribe(const net::Address& multicastAddress)

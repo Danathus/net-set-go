@@ -101,7 +101,7 @@ public:
    inline int GetNumNodesReserved() const
    {
       return static_cast<int>(mNodes.size());
-   }; 
+   };
 
    // pure virtual methods
    virtual std::string GetIdentity() const = 0;
